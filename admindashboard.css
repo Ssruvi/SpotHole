@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=poppins:wght@400;600&display=swap");
+*{
+    margin:0;
+    padding:0;
+    border: none;
+    outline: none;
+    box-shadow: border-box;
+    font-family: "poppins", sans-serif;
+}
+body{
+    display: flex;
+}
+.main-content{
+    position: relative;
+    background: #f3e7e7;
+    width: 100%;
+    padding: 1rem;
+
+}
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.header-title{
+    color:rgb(20, 26, 90);
+      
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 1rem ;  
+ }
+ .search-box{
+    background: rgb(237,237,237);
+    border-radius: 15px;
+    color: rgb(37, 37, 83);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+
+ }
+ .search-box input{
+    background: transparent ;
+    padding: 10px;
+
+ }
+ .search-box i{
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease out;
+
+
+ }
+ .search-box i:hover{
+    transform: scale(1.2);
+ }
+ /* .report-container{
+    background-color: #bda0a0;
+    padding: 2.3rem;
+    border-radius: 10px ;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+   
+ } */
+ 
+ .main-title{
+    color:rgb(16, 16, 51);
+    padding-bottom: 7px;
+    padding-top: 19px;
+    font-size: 40px;
+ }
+ .about-report{
+    position: relative;
+    right: 0;
+    margin-top: 10vh;
+    min-height: 90vh;
+    width: 80vw;
+    height: 100vh;
+
+ }
+ .about-report .report-cards{
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    transition: all 0.5s ease-in-out;
+ }
+ .about-report .report-cards :hover{
+    transform: translateY(-5px);
+ }
+    
+ .about-report .report-cards .card{
+    width: 339px;
+    height: 270px;
+    background: #ffffff;
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.15) ;
+    transition: all 0.5s ease-in-out;
+
+ }
+ .about-report .report-cards .card :hover{
+    transform: translateY(-5px);
+ } 
+ .about-report .report-cards .card .icon-case img{
+    height: 179px;
+    width: 118px;
+ }
+ h1{
+    color: black;
+    font-size: 71px;
+ }
+ h3{
+    color: rgb(62, 62, 107);
+ }

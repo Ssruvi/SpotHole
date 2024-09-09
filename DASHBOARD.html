@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> User Dashboard</title>
+    <link rel="stylesheet" href="DASHBOARD.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="DASHBOARDD.html">
+                    <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="PROFILE.html">
+                    <i class="fa-regular fa-user" style="color: #fafafa;"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="FAQ.html">
+                    <i class="fa-regular fa-circle-question" style="color: #ffffff;"></i>
+                    <span>FAQ</span>
+                </a>
+            </li>
+            <li>
+                <a href="./reportform.html">
+                    <i class="fa-solid fa-clipboard"></i>
+                    <span>Report a <br> Pothole</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-regular fa-address-card"></i>
+                    <span><b>Contact Us:</b></span>
+                </a>
+            </li>
+            <!-- <li>
+                        <a href="#">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+91-1613660629</span>
+                        </a>
+                    </li> -->
+            <li>
+                <a href="mailto:spothole3@gmail.com">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>spothole3@gmail.com</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <div class="header-wrapper">
+            <div class="header-title">
+                
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="user-info">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search" />
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="report-container">
+            <h3 class="main-title">&nbsp;&nbsp; All Reports </h3>
+            <div class="month-year-conatiner">
+                <p><b> &nbsp; Month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year </b>
+                </p>
+                <select class="select" id="month">
+                    <option value="">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+
+                <select class="select" id="year">
+                    <option value="">Year</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                </select>
+
+                <button onclick="showData()"><b>&nbsp;Show</b>
+                </button>
+            </div>
+        </div>
+        <div class="user-container">
+            <div class="user-wrapper">
+    
+            
+                <div id="user-list">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <script src="script.js"></script>
+    <script>
+
+        const showData = async () => {
+            const month = document.getElementById('month').value
+            const year = document.getElementById('year').value
+
+            const newObj = {
+                month,
+                year
+            }
+            console.log(newObj)
+
+            const response = await fetch('http://localhost:4000/getUsers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify(newObj)
+            })
+            const data = await response.json()
+            if (response.ok) {
+                console.log(data)
+                const userList = document.getElementById('user-list');
+                userList.innerHTML = ''; // Clear previous data
+
+                data.forEach(user => {
+                    // Create user element
+                    const userElement = document.createElement('div');
+                    userElement.classList.add('user');
+
+                    // Populate user information
+                    userElement.innerHTML = `
+                        <h2>${user.firstname} ${user.lastname}</h2>
+                        <p>Email: ${user.email}</p>
+                        <p>Number: ${user.number}</p>
+                        <p>Date: ${new Date(user.myDate).toLocaleString()}</p>
+                        <p>Location: ${user.location}</p>
+                        <p>Severity: ${user.severity}</p>
+                    `;
+
+                    // Append user element to user list
+                    userList.appendChild(userElement);
+                });
+            }
+            else {
+                console.log(data)
+            }
+        }
+
+
+    </script>
+    <script src="DASHBOARD.js"></script>
+</body>
+
+</html>

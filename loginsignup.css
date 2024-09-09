@@ -1,0 +1,129 @@
+.container {
+  width: 410px;
+  height: auto;
+  position: center;
+  border-radius: 5px;
+  overflow: hidden;
+  color: whitesmoke;
+  background-image: linear-gradient( rgb(0, 0, 0), rgb(44, 43, 43));
+  
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  margin:  0 auto;
+  place-items: center;
+
+}
+
+.container .slider {
+  width: 200%;
+  position: relative;
+  transition: transform ease-out 0.2s;
+  display: flex;
+}
+
+#register_toggle {
+  display: none;
+}
+
+.container #register_toggle:checked + .slider {
+  transform: translateX(-50%);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 47px;
+  padding: 1.5em 3em;
+  width: 80%;
+  height: 80%;
+}
+
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.2em;
+}
+
+form .form_control {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+form .form_control .label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transition: transform ease 0.2s;
+  transform: translate(0%, -50%);
+  font-size: 0.95em;
+  user-select: none;
+  pointer-events: none;
+  color: whitesmoke;
+}
+
+form .form_control .input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: whitesmoke;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  transition: box-shadow ease 0.2s;
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
+}
+
+form .form_control .input:focus,
+form .form_control .input:valid {
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 3px 3px 4px #0e0e0e, inset -3px -3px 4px #5f5e5e;
+}
+
+form .form_control .input:focus + .label,
+form .form_control .input:valid + .label {
+  transform: translate(-150%, -50%);
+}
+
+form button {
+   
+  width: 100%;
+  background-color: #000000;
+  border: none;
+  outline: none;
+  color: whitesmoke;;
+  padding: 0.5rem;
+  font-size: 0.98rem;
+  border-radius: 5px;
+  transition: box-shadow ease 0.1s;
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+}
+form button:hover {
+  background-color: whitesmoke;
+  color: #000000;
+}
+
+form button:active {
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 3px 3px 4px #0e0e0e, inset -3px -3px 4px #5f5e5e;
+}
+
+.bottom_text {
+  font-size: 0.75em;
+  gap: 0px;
+}
+p{
+    font-size: 0.75em; 
+}
+p, a{
+    text-decoration: none;
+    color: white
+}
+.bottom_text .swtich {
+  font-weight: 700;
+  cursor: pointer;
+}

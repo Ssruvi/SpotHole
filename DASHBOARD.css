@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=poppins:wght@400;600&display=swap");
+*{
+    margin:0;
+    padding:0;
+    border: none;
+    outline: none;
+    box-shadow: border-box;
+    font-family: "poppins", sans-serif;
+}
+body{
+    display: flex;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 200%;
+    padding: 0 1.7rem;
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background-image:linear-gradient( rgb(0, 0, 0),  rgb(40, 39, 39))
+
+}
+.sidebar:hover{
+    width: 260px;
+    transition: 0.5s;
+}
+.logo{
+    height: 80px;
+    padding: 16px;
+}
+.menu{
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.menu li{
+    padding: 1.5rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+.menu li:hover, 
+.active{
+    background: #3d3d3d58;
+    
+
+}
+.menu a{
+    color: #fff;
+    font-size: 23px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.menu a span{
+    overflow: hidden;
+}
+.menu a i{
+    font-size: 1.0rem;
+    color: white;
+}
+/* main body */
+.main-content{
+    position: relative;
+    background: linear-gradient(rgb(228, 227, 227), rgb(209, 208, 208));
+    width: 100%;
+    padding: 1rem;
+    height: 1700px
+
+}
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.header-title h1{
+    color:#000000;
+      
+}
+ .user-info{
+    display: flex;
+    align-items: center;
+    gap: 1rem ;  
+ }
+ .search-box{
+    background: rgb(2ssss37,237,237);
+    border-radius: 15px;
+    color: rgb(37, 37, 83);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+
+ }
+ .search-box input{
+    background: transparent ;
+    padding: 10px;
+
+ }
+ .search-box i{
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease out;
+
+
+ }
+ .search-box i:hover{
+    transform: scale(1.2);
+ }
+
+ 
+/* ***report section*** */
+.report-container{
+   display:flex;
+   flex-direction: column;
+   justify-content: space-between;
+   background: #ffffff;
+   margin-top: 1rem;
+   padding: 2.2rem;
+   border-radius:  7px ;
+}
+
+.select {
+   padding: 10px;
+   border-radius: 100px;
+   font-size: 22px;
+}
+.month-year-conatiner{
+ background: rgb(214, 211, 209);
+ border-radius: 10px;
+ padding: 1.2rem;
+ transition: all 0.5s ease-in-out;
+ justify-content: space-between;
+
+
+
+}
+.month-year-conatiner button{
+   padding: 15px 15px;
+   border-radius: 22px;
+   font-size: 20px;
+   color: #000000;
+   box-shadow: 0 0 0 0 transparent;
+}
+.month-year-conatiner button:hover{
+   background: #000000;
+   color:#fff;
+}
+
+/* Outer container as a table */
+/* Style the user-list to ensure it appears below */
+.user-container{
+   display:table;
+   position: relative;
+   width: 10px;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap; 
+   margin-top: 1rem;
+   padding: 5px;
+   border-radius:  7px;
+   
+}
+.user-wrapper{
+   display: flex;
+   flex-wrap: wrap; 
+   gap: 3rem;
+   padding: 10px 2rem;
+   justify-content: space-between;
+   align-items: center;
+   width: 100px;
+ 
+}
+#user-list {
+   display: block; /* Ensure block-level layout */
+   width: 60px; /* Ensure full width */
+   border-collapse: collapse; /* Collapse table borders */
+   width: 1000px;
+   margin-top: 1rem; /* Space between other content and user-list */
+ }
+ 
+ /* Style user elements within the user-list */
+ .user {
+   /* display: block; Ensure block-level layout for rows */
+   border: 1px solid #ffffff; /* Border for cells */
+   padding: 10px; /* Padding for spacing */
+ }
+ 
+ /* Make alternating row colors for clarity */
+  #user-list .user:nth-child(even) 
+   
+ 
+ /* Style table-like content */
+ .user h2, .user p {
+   width: 1500px;
+   font-size: 24px;
+   padding: 10px; /* Padding for spacing */
+   border: 1px solid #dddbdb; /* Border for cells */
+ }
+ 
+ /* Table-like header */
+ .user h2 {
+   /* background-color: #f2f2f2; Light gray background for headers */
+   font-weight: bold; /* Bold font for headers */
+   text-align: left; /* Align text to the left */
+ }
+ 
+ 

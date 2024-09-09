@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title> User Dashboard</title>
+    <link rel="stylesheet" href="/reportform.css" />
+
+</head>
+
+<body>
+    <form class="form" id="reportForm">
+        <img src="pothole.jpg" alt="Header Image">
+        <h3>Welcome to SpotHole!<br>
+            Your contribution is crucial in helping us maintain safe and smooth roads for everyone. Please take a moment
+            to fill out the following details to report any potholes you've encountered.<br>
+            Your input will contribute to safer travels for all. </h3>
+        <label for="first_name">
+            <p><b>enter first name:</b></p>
+        </label>
+        <input class="input2" type="text" id="firstname" required="">
+        <!-- <span>first name</span> -->
+        </label>
+
+        <label for="last_name">
+            <p><b>enter last name:</b></p>
+        </label>
+        <input class="input2" type="text" id="lastname" placeholder="" required="">
+        <!-- <span>last name</span> -->
+        </label>
+
+
+        <label for="email">
+            <p><b>enter your email</b></p>
+        </label>
+        <input class="input01" type="email" id="email" placeholder="" required="">
+        </label>
+
+        <label for="number">
+            <p><b>enter phone number:</b></p>
+        </label>
+        <input class="input01" placeholder="" id="number" type="tel" required="">
+        <!-- <span>contact number</span> -->
+        </label>
+        <label for="date">
+            <p><b>enter date:</b></p>
+        </label>
+        <input class="input2" placeholder="" type="date" id="date" name="date" required="">
+        <!-- <span>date</span> -->
+        </label>
+        <label for="location">
+            <p><b>enter location:</b></p>
+        </label>
+        <textarea class="input01" id="location" placeholder="" rows="3" required=""></textarea>
+        <!-- <span>location of pothole</span> -->
+        </label>
+
+        <label for="severity">
+            <p><b>Choose the severity of pothole:</b></p>
+        </label>
+        <label>
+            <input class="radio" type="radio" id="severity_mild" name="severity" value="mild" required="">
+            <span>Mild: Small pothole, minimal impact on traffic.</span>
+        </label>
+        <label>
+            <input class="radio" type="radio" id="severity_moderate" name="severity" value="moderate" required="">
+            <span>Moderate: Medium-sized pothole, causing some disruption to traffic flow.</span>
+        </label>
+        <label>
+            <input class="radio" type="radio" id="severity_severe" name="severity" value="severe" required="">
+            <span>Severe: Large pothole, posing a significant hazard to vehicles and traffic safety.</span>
+        </label>
+        <label for="potholeImage">
+            <p><b>Upload Image of Pothole:</b></p>
+        </label>
+        <input type="file" id="potholeImage" name="potholeImage" accept="image/*" required="">
+
+
+
+
+
+        <button href="#" class="fancy">
+            <span class="top-key"></span>
+            <span class="text">submit</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+        </button>
+    </form>
+    <!-- // Login Client Logic -->
+    <script>
+        let Mayank = ["Bandra", "Khar", "Santacruz", "Vile Parle", "Andheri", "Jogeshwari", "Ram Mandir", "Goregaon", "Malad", "Kandivali", "Borivali"];
+        let Ananya = ["Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central", "Mahalaxmi", "Lower Parel", "Prabhadevi", "Dadar", "Matunga Road", "Mahim"];
+        let SSruvi = ["Dahisar", "Mira Road", "Bhayandar", "Naigaon", "Vasai Road", "Nalasopara", "Virar", "Vaitarna", "Saphale", "Kelva Road", "Palghar", "Umroli", "Boisar", "Vangaon", "Dahanu Road"];
+
+        // Reporting Client Logic
+        const form = document.getElementById('reportForm');
+        const firstname = document.getElementById('firstname');
+        const lastname = document.getElementById('lastname');
+        const email = document.getElementById('email');
+        const number = document.getElementById('number');
+        // const severity = document.getElementById('severity');
+        const myDate = document.getElementById('date');
+        const myLocation = document.getElementById('location');
+        const myImage = document.getElementById('potholeImage')
+        let section;
+
+        let selected = ''
+        var radios = document.getElementsByName('severity');
+        // const severity = document.querySelector('input[name="severity"]:checked');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // console.log(firstname)
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selected = radios[i].value
+                    break;
+                }
+            }
+
+            if (Mayank.some(element => element.toLowerCase() == myLocation.value.toLowerCase())) {
+                section = "Mayank"
+            } else if (Ananya.some(element => element.toLowerCase() == myLocation.value.toLowerCase())) {
+                section = "Ananya"
+            }
+            else if (SSruvi.some(element => element.toLowerCase() == myLocation.value.toLowerCase())) {
+                section = "Ssruvi"
+            }
+            else {
+                section = "Others"
+            }
+            // console.log(myDate.value)      
+            // console.log("Selected value:", selected);
+            postReportData();
+            // console.log(myLocation.value)
+            // console.log("Submitted");
+        });
+
+        const postReportData = async () => {
+            const reportData = {
+                firstname: firstname.value,
+                lastname: lastname.value,
+                email: email.value,
+                myDate: myDate.value,
+                number: number.value,
+                location: myLocation.value,
+                severity: selected,
+                section
+            };
+
+            const file = myImage.files[0];
+            if (!file) return;
+
+            const formData = new FormData()
+            formData.append('image', file)
+            formData.append('firstname', firstname.value)
+            formData.append('lastname', lastname.value)
+            formData.append('email', email.value)
+            formData.append('myDate', myDate.value)
+            formData.append('number', number.value)
+            formData.append('location', myLocation.value)
+            formData.append('severity', selected)
+            formData.append('section', section)
+
+            // console.log(location.value)
+
+            try {
+                const response = await fetch('http://localhost:4000/submit-report', {
+                    method: "POST",
+                    // headers: {
+                    //   'Content-Type': 'application/json'
+                    // },
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    console.log(data);
+                    alert("Report submitted successfully");
+                    // You can perform further actions here, like clearing the form
+                    form.reset();
+                } else {
+                    alert("Failed to submit report");
+                }
+            } catch (error) {
+                console.log(error);
+                alert(error);
+            }
+        };
+
+    </script>
+</body>
+
+</html>

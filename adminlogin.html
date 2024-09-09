@@ -1,0 +1,36 @@
+<html>
+    <head>
+      <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="adminlogin.css">
+        <title>Admin login</title>
+    </head>
+    <body>
+      <div class="container">
+        
+        <div class="slider">
+        <form class="form" form id="Adminform">
+            <span class="title">Admin Login</span>
+            <div class="form_control">
+              <input type="text"  class="input" required="">
+              <label class="label"> Admin Username</label>
+            </div>
+            <div class="form_control">
+              <input type="password" class="input" required="">
+              <label class="label">Password</label>
+            </div>
+            <button type="submit">Login</button>
+            
+          <p>  Are you an existing user?
+            <a href="loginsignup.html"><b>log in</b></a>
+          </p>
+        </form>
+    <script>
+      document.getElementById("Adminform").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+      // Redirect the user to the dashboard page
+      window.location.href = "./DASHBOARDD.html"; // Change "/dashboard.html" to the actual URL of your dashboard page
+      });
+    </script> 
+ 
+    </body>
+</html>
