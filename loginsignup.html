@@ -11,42 +11,58 @@
   <div class="container">
     <input type="checkbox" id="register_toggle">
     <div class="slider">
+
       <form class="form" id="Loginform">
         <span class="title">Login</span>
+
         <div class="form_control">
           <input id="username" type="text" class="input" required="">
           <label class="label">Username</label>
         </div>
+
         <div class="form_control">
           <input id="password" type="password" class="input" required="">
           <label class="label">Password</label>
         </div>
-        <button type="submit">Log in</button>
 
-        <span class="bottom_text">Don't have an account? <label for="register_toggle" class="swtich">Sign Up</label>
+        <button onclick="window.location.href = 'DASHBOARD.html';">Log in</button>
+
+        <span class="bottom_text">
+          Don't have an account?
+          <label for="register_toggle" class="swtich">Sign Up</label>
         </span>
-        <p>Admin? <a href="adminlogin.html"> <b>Admin Login </b></a></p>
+
+        <p>Admin? <a href="adminlogin.html"><b>Admin Login</b></a></p>
       </form>
-      <form class="form" id="Signupform">
+
+      <form class="form" form id="Signupform">
         <span class="title">Sign Up</span>
+
         <div class="form_control">
           <input id="fullname" type="text" class="input" required="">
           <label class="label">Full name</label>
         </div>
+
         <div class="form_control">
           <input id="s_email" type="email" class="input" required="">
           <label class="label">Email</label>
         </div>
+
         <div class="form_control">
           <input id="s_password" type="password" class="input" required="">
           <label class="label">Password</label>
         </div>
-        <button type="submit">Sign Up</button>
 
-        <span class="bottom_text">Already have an account? <label for="register_toggle" class="swtich">Log In</label>
+        <button onclick="window.location.href = 'DASHBOARD.html';">Sign Up</button>
+
+        <span class="bottom_text">
+          Already have an account?
+          <label for="register_toggle" class="swtich">Log In</label>
         </span>
-        <p>Admin? <a href="adminlogin.html"> <b>Admin Login </b></a></p>
+
+        <p>Admin? <a href="adminlogin.html"><b>Admin Login</b></a></p>
       </form>
+
     </div>
   </div>
 
@@ -59,7 +75,6 @@
     const s_password = document.getElementById('s_password')
 
     const form = document.getElementById('Loginform')
-
     const s_form = document.getElementById('Signupform')
 
     form.addEventListener('submit', (e) => {
@@ -73,9 +88,6 @@
       console.log("Submitted")
       postSignupData()
     });
-
-   
-
 
     const postLoginData = async () => {
       const userData = {
@@ -100,8 +112,7 @@
           localStorage.setItem('user', JSON.stringify(data.user))
           console.log("Data successfully added to localstorage.")
           window.location = 'PROFILE.html'
-        }
-        else {
+        } else {
           alert("Invalid Credentials")
         }
       } catch (error) {
@@ -133,57 +144,14 @@
           localStorage.setItem('user', JSON.stringify(data.user))
           console.log("Data successfully added to localstorage.")
           window.location = 'index.html'
-        }
-        else {
+        } else {
           alert("Invalid Credentials")
         }
       } catch (error) {
         console.log(error)
       }
-    } 
-
+    }
   </script>
 </body>
 
 </html>
-<!-- 
-<script>
-  const form = document.getElementById('signup-form')
-  const password = document.getElementById('password')
-  const fullname = document.getElementById('fullname')
-  const username = document.getElementById('username')
-
-  form.addEventListener('submit', (e) => {
-      e.preventDefault()
-      // console.log('Signup Form')
-      postData()
-  })
-
-
-  const postData = async () => {
-      const userData = {
-          fullname: fullname.value,
-          username: username.value,
-          password: password.value,
-      }
-
-      try {
-          const response = await fetch('http://localhost:3000/register', {
-              method: "POST",
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(userData)
-          })
-
-          const data = await response.json()
-          if (response.ok) {
-              console.log(data)
-              window.location="index.html"
-          }
-      } catch (error) {
-          console.log(error)
-      }
-  }
-
-   -->
